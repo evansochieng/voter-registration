@@ -17,5 +17,53 @@ class ApplicationController < Sinatra::Base
     #return json array
     polling_stations.to_json
   end
+  get "/voters" do
+    #get all voters
+    voters = Voter.all
+    voters.to_json
+  end
+
+  get '/voters/:id' do
+    #get voter by id
+    voters = Voter.find(params[:id])
+    voters.to_json
+  end
+
+  post '/voters' do
+    #add a new voter
+    voters = Voter.create(
+      first_name: params[:first_name],
+      middle_name: params[:middle_name],
+      last_name: params[:last_name],
+      age: params[:age],
+      gender: params[:gender],
+      DOB: params[:DOB],
+      id_number: params[:id_number],
+      polling_station_id: params[:polling_station_id]
+    )
+    voters.to_json
+  end
+
+  delete '/voters/:id' do
+    #delete a voter
+    voters = Voter.find(params[:id])
+    voters.destroy
+  end
+
+  patch '/voters/:id' do 
+    #a user can change their details
+    voters = Voter.find(params[:id])
+    voters.update(
+      first_name: params[:first_name],
+      middle_name: params[:middle_name],
+      last_name: params[:last_name],
+      age: params[:age],
+      gender: params[:gender],
+      DOB: params[:DOB],
+      id_number: params[:id_number],
+      polling_station_id: params[:polling_station_id]
+    )
+    voters.to_json
+  end
 
 end
