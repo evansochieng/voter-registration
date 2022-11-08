@@ -104,7 +104,7 @@ class ApplicationController < Sinatra::Base
   end
 
   #return polling stations
-  get '/pollingstations/:id' do
+  get '/pollingstations/voters/:id' do
     #get all voters in a particular polling station
     ps_voters = PollingStation.find(params[:id]).voters
 
