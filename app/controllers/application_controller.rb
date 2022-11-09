@@ -29,10 +29,10 @@ class ApplicationController < Sinatra::Base
     voters.to_json
   end
 
-  # Search voter by id
-  get '/voters/:id' do
+  # Search voter by id_number
+  get '/voters/:id_number' do
     #get voter by id
-    voter = Voter.find(params[:id])
+    voter = Voter.find_by(id_number: params[:id_number])
 
     #return JSON
     voter.to_json
