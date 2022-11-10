@@ -56,9 +56,9 @@ class ApplicationController < Sinatra::Base
   end
 
   #Update voter details
-  patch '/voters/:id' do 
+  patch '/voters/:id_number' do 
     #a user can change their details
-    voter = Voter.find(params[:id])
+    voter = Voter.find_by(id_number: params[:id_number])
 
     #Update voter details
     # voter.update(
