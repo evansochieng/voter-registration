@@ -112,4 +112,11 @@ class ApplicationController < Sinatra::Base
     ps_voters.to_json(only: [:first_name, :middle_name, :last_name, :id_number])
   end
 
+  # #get total votes
+  # get '/voters/totalvotes' do
+  #   totalvotes = Voter.find(156)
+
+  #   totalvotes.to_json
+  # end
+
 end
